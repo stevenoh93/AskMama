@@ -30,7 +30,7 @@ http.request(options, function(response) {
 		console.log("id = " + restID);
 	});
 	response.on('end', function() {
-		getNutritionGET(restID);
+		getNutrition(restID);
 		console.log("END");
 	});
 }).end();
@@ -65,10 +65,14 @@ function getNutrition(restID) {
 		fields:["item_name","nf_calories","nf_serving_size_qty","nf_serving_size_unit", "nf_calories", 
 				"nf_calories_from_fat", "nf_total_fat", "nf_saturated_fat", "nf_sodium", "nf_total_carbohydrate",
 				"nf_dietary_fiber", "nf_sugars", "nf_protein", "nf_vitamin_a_dv", "nf_vitamin_c_dv", "nf_calcium_dv"],
-		filters:{
-			"brand_id":restID
+		queries:{
+			brand_name: "Chipotle"
 		},
-
+		sort: {
+			field: "nf_calories",
+			order: "asc"
+		},
+		limit: 50
 	});
 
 	var options2 = {
@@ -90,6 +94,7 @@ function getNutrition(restID) {
 			inData += chunk;
 		});
 		response.on('end', function() {
+			console.log(JSON.stringify(response.headers));
 			var foodData = JSON.parse(inData);
 			for(hit in foodData.hits) {
 				console.log(foodData.hits[hit].fields);
