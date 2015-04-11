@@ -1,8 +1,11 @@
 package com.stevenoh.reginahong.askmama;
 
 public class RegisterInfoPage {
-    private String mInfoString;
-    private String mImagePath;
+    private int mInfoString;
+    private int mImagePath;
 
-
+    public RegisterInfoPage(int info, int impath) {
+        mInfoString = info;
+        mImagePath = impath;
+    }
 }
