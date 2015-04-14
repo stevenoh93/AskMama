@@ -14,7 +14,9 @@
     <string name="question_height">How tall are you?</string>
     <string name="input_height">inches</string>
     <string name="question_weight">Your weight?</string>
+    <string name="input_weight">pounds</string>
     <string name="question_dob">When is your birthday?</string>
+    <string name="input_dob">dd/mm/yyyy</string>
     <string name="question_sex">I am</string>
     <string name="question_active">You are</string>
     <string name="sedentary">Sedentary\nSpend most of the day sitting</string>
@@ -24,6 +26,8 @@
     <string name="success_message">Successfully Registered!\n\nYour recommended daily net calorie is\n\n%d Cal</string>
 
     <string name="error_height">Please enter a number for your height</string>
+    <string name="error_weight">Please enter a number for your weight</string>
+    <string name="error_dob">Please enter your date of birth in the format \'mm/dd/yyyy\'</string>
 
 </resources>
 
