@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green">
+
+    <include
+        android:id="@+id/progress_bar"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_weight="2"
+        layout="@layout/progress_row" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/question_goals"
+        android:textSize="20dp"
+        android:layout_weight="2"/>
+    <LinearLayout
+        android:id="@+id/fragment_goals_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/list_item_1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
+            layout="@layout/list_item_goal" />
+        <include
+            android:id="@+id/list_item_2"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
+            layout="@layout/list_item_goal" />
+        <include
+            android:id="@+id/list_item_3"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
+            layout="@layout/list_item_goal" />
+        <include
+            android:id="@+id/list_item_4"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
+            layout="@layout/list_item_goal" />
+        </LinearLayout>
+
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_weight="2"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/next_button"
+        android:background="@drawable/button_shape_normal"/> <!-- to be changed -->
+    
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.stevenoh.reginahong.askmama;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -43,6 +44,7 @@ public class RegisterFragment extends Fragment {
         TextView textView = (TextView) v.findViewById(R.id.register_textview);
         Button leftCircle = (Button) v.findViewById(R.id.progress_circle1);
         Button rightCircle = (Button) v.findViewById(R.id.progress_circle2);
+        // Change text view if more pages are to be added.
         switch (mPage) {
             case 0:
                 Log.d(TAG, "Case 0 selected");
@@ -60,6 +62,14 @@ public class RegisterFragment extends Fragment {
                 break;
         }
 
+        Button registerButton = (Button) v.findViewById(R.id.register_button);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), InputPagerActivity.class);
+                startActivity(i);
+            }
+        });
         return v;
     }
 

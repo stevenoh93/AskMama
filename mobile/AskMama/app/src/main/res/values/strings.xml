@@ -12,6 +12,7 @@
     <string name="goal_3">Lose weight</string>
     <string name="goal_4">Gain weight</string>
     <string name="question_height">How tall are you?</string>
+    <string name="input_height">inches</string>
     <string name="question_weight">Your weight?</string>
     <string name="question_dob">When is your birthday?</string>
     <string name="question_sex">I am</string>
@@ -21,6 +22,8 @@
     <string name="active">Active\nSpend a good part of the day doing some physical activity</string>
     <string name="very_active">Very Active\nSpend most of the day doing heavy physical activity</string>
     <string name="success_message">Successfully Registered!\n\nYour recommended daily net calorie is\n\n%d Cal</string>
+
+    <string name="error_height">Please enter a number for your height</string>
 
 </resources>
 

@@ -1,45 +1,47 @@
 package com.stevenoh.reginahong.askmama;
 
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 
 import java.util.ArrayList;
 
-public class RegisterPagerActivity extends FragmentActivity {
-    private static final String TAG = "RegisterPagerActivity";
-    private ViewPager mViewPager;
-
-    // Remove this and add singleton if more pages are to be added
-    private RegisterInfoPage[] mInfos = new RegisterInfoPage[] {
-            new RegisterInfoPage(-1, R.drawable.logo),
-            new RegisterInfoPage(R.string.register_info_2, -1)
-    };
+public class InputPagerActivity extends FragmentActivity {
+    private static final String TAG = "InputPagerActivity";
+    public ViewPager mViewPager;
+    private ArrayList<Fragment> pages = new ArrayList<Fragment>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        pages.add(new GoalsFragment());
+        pages.add(InputFragment.newInstance(1));
+        pages.add(InputFragment.newInstance(2));
+        pages.add(InputFragment.newInstance(3));
+
+
 //        mViewPager = (ViewPager) findViewById(R.id.viewPager);
         mViewPager = new ViewPager(this);
-        mViewPager.setId(R.id.viewPager);
+        mViewPager.setId(R.id.viewPager_input);
         setContentView(mViewPager);
 
         FragmentManager fm = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fm) {
             @Override
             public Fragment getItem(int i) {
-                return RegisterFragment.newInstance(i);
+                return pages.get(i);
             }
             @Override
-            public int getCount() { return mInfos.length; }
+            public int getCount() { return pages.size(); }
         });
 
 
         mViewPager.setCurrentItem(0);
     }
 }
+
