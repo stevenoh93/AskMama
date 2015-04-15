@@ -91,8 +91,8 @@ public class UserProfile {
     }
 
     public String toString() {
-        String out = "";
-        out += "Goal = " + mGoal + "\n";
+        String out = "\n";
+        out += "Goal = " + mGoal[0] + ", " + mGoal[1] + ", " + mGoal[2] + ", " + mGoal[3] + " " + "\n";
         out += "Height = " + mHeight + "\n";
         out += "Weight = " + mWeight + "\n";
         out += "DOB = " + mDob + "\n";
