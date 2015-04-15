@@ -22,10 +22,10 @@ public class InputFragment extends Fragment {
     private int mPage;
     private UserProfile mUser;
 
-    private TextView question;
-    private ImageView imageView;
-    private Button nextButton;
-    private EditText text;
+    private TextView mQuestion;
+    private ImageView mImageView;
+    private Button mNextButton;
+    private EditText nText;
 
 
     public static InputFragment newInstance(int idx) {
@@ -54,22 +54,22 @@ public class InputFragment extends Fragment {
         // set text
 
         MyUtilities.updateProgressBar(v, mPage);
-        question = (TextView) v.findViewById(R.id.input_question_textView);
-        imageView = (ImageView) v.findViewById(R.id.input_image_view);
-        nextButton = (Button) v.findViewById(R.id.input_next_button);
-        text = (EditText) v.findViewById(R.id.input_edit_text);
+        mQuestion = (TextView) v.findViewById(R.id.input_question_textView);
+        mImageView = (ImageView) v.findViewById(R.id.input_image_view);
+        mNextButton = (Button) v.findViewById(R.id.input_next_button);
+        nText = (EditText) v.findViewById(R.id.input_edit_text);
         switch (mPage) {
             case 1:
                 // Set imageview source
                 // Set button color
-                question.setText(R.string.question_height);
-                text.setHint(R.string.input_height);
-                text.setInputType(InputType.TYPE_CLASS_NUMBER);
-                nextButton.setOnClickListener(new View.OnClickListener() {
+                mQuestion.setText(R.string.question_height);
+                nText.setHint(R.string.input_height);
+                nText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                mNextButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         boolean set = false;
                         try {
-                            mUser.setHeight(Double.parseDouble(text.getText().toString()));
+                            mUser.setHeight(Double.parseDouble(nText.getText().toString()));
                             set = true;
                         } catch (Exception e) {
                             Toast.makeText(getActivity(), R.string.error_height, Toast.LENGTH_SHORT).show();
@@ -82,14 +82,14 @@ public class InputFragment extends Fragment {
             case 2:
                 // Set imageview source
                 // Set button color
-                question.setText(R.string.question_weight);
-                text.setHint(R.string.input_weight);
-                text.setInputType(InputType.TYPE_CLASS_NUMBER);
-                nextButton.setOnClickListener(new View.OnClickListener() {
+                mQuestion.setText(R.string.question_weight);
+                nText.setHint(R.string.input_weight);
+                nText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                mNextButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         boolean set = false;
                         try {
-                            mUser.setWeight(Double.parseDouble(text.getText().toString()));
+                            mUser.setWeight(Double.parseDouble(nText.getText().toString()));
                             set = true;
                         } catch (Exception e) {
                             Toast.makeText(getActivity(), R.string.error_weight, Toast.LENGTH_SHORT).show();
@@ -103,21 +103,48 @@ public class InputFragment extends Fragment {
                 // Set imageview source
                 // Set button color
                 // Change to date picker fragment later
-                question.setText(R.string.question_dob);
-                text.setHint(R.string.input_dob);
-                nextButton.setOnClickListener(new View.OnClickListener() {
+                mQuestion.setText(R.string.question_dob);
+                nText.setHint(R.string.input_dob);
+                mNextButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         boolean set = false;
                         try {
-                            mUser.setDob(new Date(text.getText().toString()));
+                            mUser.setDob(new Date(nText.getText().toString()));
                             set = true;
                         } catch (Exception e) {
                             Toast.makeText(getActivity(), R.string.error_dob, Toast.LENGTH_SHORT).show();
                         }
                         if (set)
-                            ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(3);
+                            ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(4);
                     }
                 });
+                break;
+            case 4:
+                // Set male female image view source, female selected by default
+                mQuestion.setText(R.string.question_sex);
+                nText.setVisibility(View.GONE);
+                mNextButton.setVisibility(View.GONE);
+                mImageView.setVisibility(View.GONE);
+                LinearLayout maleFemaleImage = (LinearLayout) v.findViewById(R.id.input_maleFemalePage_LinearLayout);
+                maleFemaleImage.setVisibility(View.VISIBLE);
+                // Female image
+                ((ImageView) maleFemaleImage.getChildAt(0)).setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        mUser.setMale(false);
+                        // change image to selected
+                        ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(5);
+                    }
+                });
+                // Male image
+                ((ImageView) maleFemaleImage.getChildAt(1)).setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        mUser.setMale(true);
+                        // change image to selected
+                        ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(5);
+                    }
+                });
+                break;
+            case 5:
                 break;
         }
 

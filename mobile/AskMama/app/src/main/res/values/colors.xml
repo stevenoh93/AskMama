@@ -10,4 +10,7 @@
     <color name="pink">#ffcc99</color>
     <color name="purple">#d8c5cf</color>
     <color name="blue">#8ac4dc</color>
+    <color name="blue70">#B38ac4dc</color>
+    <color name="blue40">#288ac4dc</color>
+    <color name="blue20">#148ac4dc</color>
 </resources>

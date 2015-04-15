@@ -89,4 +89,18 @@ public class UserProfile {
     public int getDailyNetCalorie() {
         return mDailyNetCalorie;
     }
+
+    public String toString() {
+        String out = "";
+        out += "Goal = " + mGoal + "\n";
+        out += "Height = " + mHeight + "\n";
+        out += "Weight = " + mWeight + "\n";
+        out += "DOB = " + mDob + "\n";
+        out += "Gender = " + mIsMale + "\n";
+        out += "ActiveLevel = " + mActiveLevel;
+
+        return out;
+    }
 }
+
+
