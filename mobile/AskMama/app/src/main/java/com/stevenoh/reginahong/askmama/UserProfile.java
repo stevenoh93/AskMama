@@ -11,20 +11,23 @@ public class UserProfile {
                                               // 1 -> Special dietary needs
                                               // 2 -> Lose weight
                                               // 3 -> Gain weight
-    private double mHeight; // in inches
-    private double mWeight; // in pounds
+    private double mHeight; // in cm
+    private double mWeight; // in kg
     private Date mDob;
+    private int age;
     private boolean mIsMale;
-    private int mActiveLevel; // 0 -> Sedentary
-                             // 1 -> Lightly active
-                             // 2 -> Active
-                             // 3 -> Very active
+    private double mActiveLevel; // 1.0 / 1.0 -> Sedentary (M/F)
+                             // 1.11 / 1.12 -> Lightly active
+                             // 1.25 / 1.27 -> Active
+                             // 1.48 / 1.45 -> Very active
+    private int mActiveLevelChoice;
 
     private static UserProfile sUser;
     private int mDailyNetCalorie;
 
     private UserProfile() {
         mDob = new Date();
+        mActiveLevelChoice = -1;
     }
 
     public static UserProfile get(){
@@ -38,23 +41,40 @@ public class UserProfile {
     }
 
     public void setHeight(double height) {
-        mHeight = height;
+        mHeight = height * 2.54;
     }
 
     public void setWeight(double weight) {
-        mWeight = weight;
+        mWeight = weight * 0.453592;
     }
 
     public void setDob(Date dob) {
         mDob = dob;
+
     }
 
     public void setMale(boolean isMale) {
         mIsMale = isMale;
+        if (mActiveLevelChoice >= 0)
+            setActiveLevel(mActiveLevelChoice);
     }
 
     public void setActiveLevel(int activeLevel) {
-        mActiveLevel = activeLevel;
+        mActiveLevelChoice = activeLevel;
+        switch (activeLevel) {
+            case 0:
+                mActiveLevel = 1.0;
+                break;
+            case 1:
+                mActiveLevel = mIsMale ? 1.11 : 1.12;
+                break;
+            case 2:
+                mActiveLevel = mIsMale ? 1.25 : 1.27;
+                break;
+            case 3:
+                mActiveLevel = mIsMale ? 1.48 : 1.45;
+                break;
+        }
     }
 
 
@@ -66,12 +86,18 @@ public class UserProfile {
         return mGoal[idx];
     }
 
+    /*
+        Height in inches
+     */
     public double getHeight() {
-        return mHeight;
+        return mHeight * 0.393701;
     }
 
+    /*
+        Weight in pounds
+     */
     public double getWeight() {
-        return mWeight;
+        return mWeight * 2.20462;
     }
 
     public Date getDob() {
@@ -82,11 +108,18 @@ public class UserProfile {
         return mIsMale;
     }
 
-    public int getActiveLevel() {
-        return mActiveLevel;
+    public int getActiveLevelChoice() {
+        return mActiveLevelChoice;
     }
 
     public int getDailyNetCalorie() {
+           
+        if (mIsMale) {
+
+        } else {
+
+        }
+
         return mDailyNetCalorie;
     }
 
