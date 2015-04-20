@@ -1,6 +1,7 @@
 package com.stevenoh.reginahong.askmama;
 
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -11,9 +12,9 @@ public class UserProfile {
                                               // 1 -> Special dietary needs
                                               // 2 -> Lose weight
                                               // 3 -> Gain weight
-    private double mHeight; // in cm
+    private double mHeight; // in m
     private double mWeight; // in kg
-    private Date mDob;
+    private String mDob; // dd/mm/yyyy
     private int age;
     private boolean mIsMale;
     private double mActiveLevel; // 1.0 / 1.0 -> Sedentary (M/F)
@@ -41,16 +42,15 @@ public class UserProfile {
     }
 
     public void setHeight(double height) {
-        mHeight = height * 2.54;
+        mHeight = height * .0254;
     }
 
     public void setWeight(double weight) {
         mWeight = weight * 0.453592;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         mDob = dob;
-
     }
 
     public void setMale(boolean isMale) {
@@ -90,7 +90,7 @@ public class UserProfile {
         Height in inches
      */
     public double getHeight() {
-        return mHeight * 0.393701;
+        return mHeight * 39.3701;
     }
 
     /*
@@ -100,7 +100,7 @@ public class UserProfile {
         return mWeight * 2.20462;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return mDob;
     }
 
@@ -113,11 +113,22 @@ public class UserProfile {
     }
 
     public int getDailyNetCalorie() {
-           
-        if (mIsMale) {
+        Calendar cal = Calendar.getInstance();
+        int curYear = cal.get(Calendar.YEAR);
+        int curMonth = cal.get(Calendar.MONTH);
+        int curDay = cal.get(Calendar.DAY_OF_MONTH);
+        String[] d = mDob.split("/");
+        int[] dob = new int[] {
+                Integer.parseInt(d[0]),
+                Integer.parseInt(d[1]),
+                Integer.parseInt(d[2])
+        };
+        double age = ( curMonth+1 == dob[1] ) && ( curDay < dob[0] ) ? curYear - dob[2] + 1 : curYear - dob[2];
 
+        if (mIsMale) {  // Formula obtained from HLTH 1050 Nutrition in the Life Cycle
+            mDailyNetCalorie = (int) Math.round( 662-(9.53*age) + mActiveLevel*15.91*mWeight + 539.6*mHeight );
         } else {
-
+            mDailyNetCalorie = (int) Math.round( 4-(6.91*age) + mActiveLevel*9.36*mWeight + 726*mHeight );
         }
 
         return mDailyNetCalorie;
