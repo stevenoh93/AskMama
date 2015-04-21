@@ -27,7 +27,6 @@ public class UserProfile {
     private int mDailyNetCalorie;
 
     private UserProfile() {
-        mDob = new Date();
         mActiveLevelChoice = -1;
     }
 
@@ -142,6 +141,7 @@ public class UserProfile {
         out += "DOB = " + mDob + "\n";
         out += "Gender = " + mIsMale + "\n";
         out += "ActiveLevel = " + mActiveLevel;
+        out += "Daily calorie = " + getDailyNetCalorie();
 
         return out;
     }

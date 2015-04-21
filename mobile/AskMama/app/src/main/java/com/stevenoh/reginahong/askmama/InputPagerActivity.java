@@ -25,6 +25,7 @@ public class InputPagerActivity extends FragmentActivity {
         pages.add(InputFragment.newInstance(3));
         pages.add(InputFragment.newInstance(4));
         pages.add(new ActiveLevelFragment());
+        pages.add(new SuccessPageFragment());
 
 
 //        mViewPager = (ViewPager) findViewById(R.id.viewPager);

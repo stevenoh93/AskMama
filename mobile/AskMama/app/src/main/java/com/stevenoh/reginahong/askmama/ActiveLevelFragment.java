@@ -34,11 +34,13 @@ public class ActiveLevelFragment extends Fragment {
         LinearLayout levels = (LinearLayout) v.findViewById(R.id.active_level_choice_list);
         TextView curTextView;
         curTextView = (TextView) levels.getChildAt(0);
+
         curTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mUser.setActiveLevel(0);
-                validateInput();
+                if (validateInput())
+                    ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(6);
             }
         });
 
@@ -47,7 +49,8 @@ public class ActiveLevelFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mUser.setActiveLevel(1);
-                validateInput();
+                if (validateInput())
+                    ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(6);
             }
         });
 
@@ -56,7 +59,8 @@ public class ActiveLevelFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mUser.setActiveLevel(2);
-                validateInput();
+                if (validateInput())
+                    ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(6);
             }
         });
 
@@ -65,14 +69,16 @@ public class ActiveLevelFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mUser.setActiveLevel(3);
-                validateInput();
+                if (validateInput())
+                    ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(6);
             }
         });
 
         return v;
     }
 
-    private void validateInput() {
+    private boolean validateInput() {
         Log.d(TAG, mUser.toString());
+        return true;
     }
 }

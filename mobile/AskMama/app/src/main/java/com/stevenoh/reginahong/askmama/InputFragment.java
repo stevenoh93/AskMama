@@ -25,7 +25,7 @@ public class InputFragment extends Fragment {
     private TextView mQuestion;
     private ImageView mImageView;
     private Button mNextButton;
-    private EditText nText;
+    private EditText mText;
 
 
     public static InputFragment newInstance(int idx) {
@@ -57,19 +57,19 @@ public class InputFragment extends Fragment {
         mQuestion = (TextView) v.findViewById(R.id.input_question_textView);
         mImageView = (ImageView) v.findViewById(R.id.input_image_view);
         mNextButton = (Button) v.findViewById(R.id.input_next_button);
-        nText = (EditText) v.findViewById(R.id.input_edit_text);
+        mText = (EditText) v.findViewById(R.id.input_edit_text);
         switch (mPage) {
             case 1:
                 // Set imageview source
                 // Set button color
                 mQuestion.setText(R.string.question_height);
-                nText.setHint(R.string.input_height);
-                nText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                mText.setHint(R.string.input_height);
+                mText.setInputType(InputType.TYPE_CLASS_NUMBER);
                 mNextButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         boolean set = false;
                         try {
-                            mUser.setHeight(Double.parseDouble(nText.getText().toString()));
+                            mUser.setHeight(Double.parseDouble(mText.getText().toString()));
                             set = true;
                         } catch (Exception e) {
                             Toast.makeText(getActivity(), R.string.error_height, Toast.LENGTH_SHORT).show();
@@ -83,13 +83,13 @@ public class InputFragment extends Fragment {
                 // Set imageview source
                 // Set button color
                 mQuestion.setText(R.string.question_weight);
-                nText.setHint(R.string.input_weight);
-                nText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                mText.setHint(R.string.input_weight);
+                mText.setInputType(InputType.TYPE_CLASS_NUMBER);
                 mNextButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         boolean set = false;
                         try {
-                            mUser.setWeight(Double.parseDouble(nText.getText().toString()));
+                            mUser.setWeight(Double.parseDouble(mText.getText().toString()));
                             set = true;
                         } catch (Exception e) {
                             Toast.makeText(getActivity(), R.string.error_weight, Toast.LENGTH_SHORT).show();
@@ -104,12 +104,12 @@ public class InputFragment extends Fragment {
                 // Set button color
                 // Change to date picker fragment later
                 mQuestion.setText(R.string.question_dob);
-                nText.setHint(R.string.input_dob);
+                mText.setHint(R.string.input_dob);
                 mNextButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         boolean set = false;
                         try {
-                            mUser.setDob(new Date(nText.getText().toString()));
+                            mUser.setDob(mText.getText().toString());
                             set = true;
                         } catch (Exception e) {
                             Toast.makeText(getActivity(), R.string.error_dob, Toast.LENGTH_SHORT).show();
@@ -122,7 +122,7 @@ public class InputFragment extends Fragment {
             case 4:
                 // Set male female image view source, female selected by default
                 mQuestion.setText(R.string.question_sex);
-                nText.setVisibility(View.GONE);
+                mText.setVisibility(View.GONE);
                 mNextButton.setVisibility(View.GONE);
                 mImageView.setVisibility(View.GONE);
                 LinearLayout maleFemaleImage = (LinearLayout) v.findViewById(R.id.input_maleFemalePage_LinearLayout);
