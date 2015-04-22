@@ -1,9 +1,14 @@
 package com.stevenoh.reginahong.askmama;
 
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +18,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.DatePicker;
+import android.app.DatePickerDialog;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.zip.Inflater;
 
 public class InputFragment extends Fragment {
+
     private static final String EXTRA_INPUT_PAGE = "askmama.inputPage";
+    private static final int DATE_PICKER_DIALOG_ID = 999;
+    private static final String TAG = "InputFragment";
+    private static final int DIALOG_FRAGMENT = 102;
+    public static final String DOB_TAG = "nutrimate.dobtag";
+
     private int mPage;
     private UserProfile mUser;
 
@@ -103,9 +117,16 @@ public class InputFragment extends Fragment {
             case 3:
                 // Set imageview source
                 // Set button color
-                // Change to date picker fragment later
                 mQuestion.setText(R.string.question_dob);
                 mText.setHint(R.string.input_dob);
+                mText.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        DialogFragment dialog = new DatePickerFragment();
+                        dialog.setTargetFragment(getParentFragment(), DIALOG_FRAGMENT);
+                        dialog.show(getFragmentManager(), "DatePicker");
+                    }
+                });
                 mNextButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         boolean set = false;
@@ -150,6 +171,27 @@ public class InputFragment extends Fragment {
         }
 
         return v;
-
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode) {
+            case DIALOG_FRAGMENT:
+
+                if (resultCode == Activity.RESULT_OK) {
+                    Log.d(TAG, "ActivityResult called: " + data.getStringExtra(DOB_TAG));
+                } else if (resultCode == Activity.RESULT_CANCELED){
+                    // After Cancel code.
+                    Log.d(TAG, "ActivityResult called");
+                }
+
+                break;
+        }
+    }
+
+    public void onDateChanged(String data) {
+        Log.d(TAG, "ActivityResult called: " + data);
+    }
+
+
 }
