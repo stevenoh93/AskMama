@@ -1,5 +1,6 @@
 package com.stevenoh.reginahong.askmama;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -22,6 +23,8 @@ public class SuccessPageFragment extends Fragment {
         startButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 // Start dashboard
+                Intent i = new Intent(getActivity(), DashboardActivity.class);
+                startActivity(i);
             }
         });
 

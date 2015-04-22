@@ -18,7 +18,9 @@
         </activity>
         <activity android:name=".InputPagerActivity"
             android:label="AskMama" >
-
+        </activity>
+        <activity android:name=".DashboardActivity"
+            android:label="AskMama" >
         </activity>
     </application>
 

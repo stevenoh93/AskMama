@@ -40,6 +40,7 @@ public class InputFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(EXTRA_INPUT_PAGE);
         mUser = UserProfile.get();
+        setRetainInstance(true);
     }
 
     @Override

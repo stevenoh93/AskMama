@@ -25,6 +25,7 @@ public class UserProfile {
 
     private static UserProfile sUser;
     private int mDailyNetCalorie;
+    private boolean calorieCalculated;
 
     private UserProfile() {
         mActiveLevelChoice = -1;
@@ -112,6 +113,13 @@ public class UserProfile {
     }
 
     public int getDailyNetCalorie() {
+        if (!calorieCalculated)
+            calculateCalorie();
+
+        return mDailyNetCalorie;
+    }
+
+    public void calculateCalorie() {
         Calendar cal = Calendar.getInstance();
         int curYear = cal.get(Calendar.YEAR);
         int curMonth = cal.get(Calendar.MONTH);
@@ -130,7 +138,7 @@ public class UserProfile {
             mDailyNetCalorie = (int) Math.round( 4-(6.91*age) + mActiveLevel*9.36*mWeight + 726*mHeight );
         }
 
-        return mDailyNetCalorie;
+        calorieCalculated = true;
     }
 
     public String toString() {
@@ -140,7 +148,7 @@ public class UserProfile {
         out += "Weight = " + mWeight + "\n";
         out += "DOB = " + mDob + "\n";
         out += "Gender = " + mIsMale + "\n";
-        out += "ActiveLevel = " + mActiveLevel;
+        out += "ActiveLevel = " + mActiveLevel + "\n";
         out += "Daily calorie = " + getDailyNetCalorie();
 
         return out;
