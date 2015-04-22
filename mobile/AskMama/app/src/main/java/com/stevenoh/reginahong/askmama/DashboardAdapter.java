@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -31,7 +32,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Card
 
         DashboardCard curCard = cards.get(i);
         holder.headerTextView.setText(R.string.card_header_text);
-        holder.month.setText(Integer.toString(c.get(Calendar.MONTH)+1));
+        holder.month.setText(new DateFormatSymbols().getMonths()[c.get(Calendar.MONTH)]);
         holder.dayOfMonth.setText(Integer.toString(c.get(Calendar.DAY_OF_MONTH)));
     }
 

@@ -123,7 +123,7 @@ public class InputFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         DialogFragment dialog = new DatePickerFragment();
-                        dialog.setTargetFragment(getParentFragment(), DIALOG_FRAGMENT);
+                        dialog.setTargetFragment(InputFragment.this, DIALOG_FRAGMENT);
                         dialog.show(getFragmentManager(), "DatePicker");
                     }
                 });
@@ -173,24 +173,9 @@ public class InputFragment extends Fragment {
         return v;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch(requestCode) {
-            case DIALOG_FRAGMENT:
-
-                if (resultCode == Activity.RESULT_OK) {
-                    Log.d(TAG, "ActivityResult called: " + data.getStringExtra(DOB_TAG));
-                } else if (resultCode == Activity.RESULT_CANCELED){
-                    // After Cancel code.
-                    Log.d(TAG, "ActivityResult called");
-                }
-
-                break;
-        }
-    }
-
     public void onDateChanged(String data) {
         Log.d(TAG, "ActivityResult called: " + data);
+        mText.setText(data);
     }
 
 
