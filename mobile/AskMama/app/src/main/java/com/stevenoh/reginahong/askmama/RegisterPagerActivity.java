@@ -16,7 +16,7 @@ public class RegisterPagerActivity extends FragmentActivity {
 
     // Remove this and add singleton if more pages are to be added
     private RegisterInfoPage[] mInfos = new RegisterInfoPage[] {
-            new RegisterInfoPage(-1, R.drawable.logo),
+            new RegisterInfoPage(-1, R.drawable.logo_img),
             new RegisterInfoPage(R.string.register_info_2, -1)
     };
 

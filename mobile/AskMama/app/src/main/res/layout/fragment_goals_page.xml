@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green">
+    android:background="@color/white">
 
     <include
         android:id="@+id/progress_bar"
@@ -17,54 +17,83 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/question_goals"
-        android:textSize="20dp"
-        android:layout_weight="2"/>
+        android:textSize="20sp"
+        android:layout_weight="1"/>
     <LinearLayout
-        android:id="@+id/fragment_goals_linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="11"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/list_item_1"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/selected_goals_linearlayout"
             android:layout_width="match_parent"
-            android:layout_marginBottom="5dp"
-            layout="@layout/list_item_goal" />
-        <include
-            android:id="@+id/list_item_2"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="5dp"
-            layout="@layout/list_item_goal" />
-        <include
-            android:id="@+id/list_item_3"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="5dp"
-            layout="@layout/list_item_goal" />
-        <include
-            android:id="@+id/list_item_4"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="5dp"
-            layout="@layout/list_item_goal" />
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="45dp"
+                android:text="@string/my_goals"/>
+
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/unselected_goals_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="45dp"
+                android:text="@string/add_goals"/>
+
+            <include
+                android:id="@+id/list_item_1"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                layout="@layout/list_item_goal" />
+
+            <include
+                android:id="@+id/list_item_2"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                layout="@layout/list_item_goal" />
+            <include
+                android:id="@+id/list_item_3"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                layout="@layout/list_item_goal" />
+            <include
+                android:id="@+id/list_item_4"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                layout="@layout/list_item_goal" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/next_button"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_weight="2"
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="@string/next_button"
+        android:textColor="@color/white"
         android:background="@drawable/button_shape_normal"/> <!-- to be changed -->
     
 

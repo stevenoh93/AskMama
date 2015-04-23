@@ -1,6 +1,6 @@
 package com.stevenoh.reginahong.askmama;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -8,17 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
+
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+
 
 
 import org.w3c.dom.Text;
 
-public class GoalsFragment extends Fragment {
+public class GoalsFragment extends Fragment implements View.OnClickListener{
     private static final String TAG = "GoalsFragment";
     private int mPage = 0;
     private int[] goalText = new int[] {
@@ -27,7 +27,11 @@ public class GoalsFragment extends Fragment {
             R.string.goal_3,
             R.string.goal_4
     };
+    private boolean[] selected = new boolean[4];
     private UserProfile mUser = UserProfile.get();
+    private LinearLayout[] goals;
+    private LinearLayout unGoals;
+    private LinearLayout selGoals;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,39 +47,31 @@ public class GoalsFragment extends Fragment {
         // Set progress bar
         MyUtilities.updateProgressBar(v, mPage);
 
-        LinearLayout goals = (LinearLayout) v.findViewById(R.id.fragment_goals_linearLayout);
+        unGoals = (LinearLayout) v.findViewById(R.id.unselected_goals_linearlayout);
+        selGoals = (LinearLayout) v.findViewById(R.id.selected_goals_linearlayout);
+        goals = new LinearLayout[] {
+                (LinearLayout) v.findViewById(R.id.list_item_1),
+                (LinearLayout) v.findViewById(R.id.list_item_2),
+                (LinearLayout) v.findViewById(R.id.list_item_3),
+                (LinearLayout) v.findViewById(R.id.list_item_4)
+        };
+
         for (int i=0; i<goalText.length; i++) {
-            RelativeLayout rel = (RelativeLayout) goals.getChildAt(i);
-            TextView goal = (TextView) rel.findViewById(R.id.goal_list_item_textView);
-            goal.setText(goalText[i]);
-            CheckBox box = (CheckBox) rel.findViewById(R.id.goal_list_item_checkbox);
-            box.setChecked(mUser.getGoal(i));
+            TextView goalTextView = (TextView) goals[i].findViewById(R.id.goal_list_item_textView);
+            goalTextView.setText(goalText[i]);
+            ImageButton box = (ImageButton) goals[i].findViewById(R.id.goal_list_item_checkbox);
             box.setEnabled(true);
-            box.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    int id = ((RelativeLayout) buttonView.getParent()).getId();
-                    switch (id) {
-                        case R.id.list_item_1:
-                            mUser.setGoal(0, isChecked);
-                            break;
-                        case R.id.list_item_2:
-                            mUser.setGoal(1, isChecked);
-                            break;
-                        case R.id.list_item_3:
-                            mUser.setGoal(2, isChecked);
-                            break;
-                        case R.id.list_item_4:
-                            mUser.setGoal(3, isChecked);
-                            break;
-                    }
-                }
-            });
+            box.setOnClickListener(this);
+            Log.d(TAG, "In the for loop, box.isEnabled() = " + box.isEnabled());
         }
 
         Button nextButton = (Button) v.findViewById(R.id.next_button);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                for (int i=0; i<goals.length; i++)
+                    mUser.setGoal(i, selected[i]);
+
                 ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(1);
             }
         });
@@ -83,5 +79,52 @@ public class GoalsFragment extends Fragment {
         return v;
     }
 
+    public void onClick(View view) {
+        LinearLayout parent = (LinearLayout) view.getParent();
+        ImageButton addButton = (ImageButton) view;
+        int id = parent.getId();
+        int index = 0;
+        switch (id) {
+            case R.id.list_item_1:
+                index=0;
+                break;
+            case R.id.list_item_2:
+                index=1;
+                break;
+            case R.id.list_item_3:
+                index=2;
+                break;
+            case R.id.list_item_4:
+                index=3;
+                break;
+        }
+        LayoutParams params;
+
+        if (selected[index]) {
+            selected[index] = false;
+            selGoals.removeView(parent);
+            unGoals.addView(parent);
+            addButton.setImageResource(R.drawable.plus_orange);
+            params = (LayoutParams) selGoals.getLayoutParams();
+            params.weight -= .15;
+            selGoals.setLayoutParams(params);
+            params = (LayoutParams) unGoals.getLayoutParams();
+            params.weight += .15;
+            unGoals.setLayoutParams(params);
+        } else {
+            selected[index] = true;
+            unGoals.removeView(parent);
+            selGoals.addView(parent);
+            addButton.setImageResource(R.drawable.checkmark);
+            params = (LayoutParams) selGoals.getLayoutParams();
+            params.weight += .15;
+            selGoals.setLayoutParams(params);
+            params = (LayoutParams) unGoals.getLayoutParams();
+            params.weight -= .15;
+            unGoals.setLayoutParams(params);
+        }
+    }
+
     
 }
+

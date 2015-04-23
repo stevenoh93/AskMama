@@ -1,65 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/register_page"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="false"
     android:gravity="center_horizontal"
-    android:background="@color/white"
-    android:weightSum="5">
+    android:background="@color/green"
+     >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:background="@color/orange_background"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:paddingTop="70dp"
         android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/logo_text"
+            android:layout_width="270dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/logo_text_01"
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/logo_image"
             android:layout_width="270dp"
-            android:layout_height="400dp"
+            android:layout_height="0dp"
             android:layout_gravity="center"
-            android:src="@drawable/logo"
+            android:layout_weight="1"
+            android:src="@drawable/logo_img"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/register_textview"
-            android:layout_width="313dp"
-            android:layout_height="400dp"
-            android:layout_gravity="center"
-
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:layout_weight="1"
             android:text="@string/register_info_2"
-            android:textAlignment="center"
-            android:textSize="35dp" />
+            android:textSize="30sp"
+            android:textColor="@color/white"
+            />
 
         <LinearLayout
+            android:id="@+id/progress_circle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/progress_circle1"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/progress_circle_selected"/>
+                android:background="@drawable/progress_circle"/>
             <Button
-                android:id="@+id/progress_circle2"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:background="@drawable/progress_circle"/>
+                android:background="@drawable/progress_circle_selected"/>
 
             </LinearLayout>
     </LinearLayout>
 
     <Button
         android:id="@+id/register_button"
-        android:text="@string/register_button"
-        android:layout_marginBottom="50dp"
-        android:layout_marginTop="50dp"
-        style="@style/GeneralButton"
+        android:layout_height="0dp"
+        android:layout_width="200dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:layout_weight="1.44"
+        android:background="@drawable/start_red"
          />
 </LinearLayout>

@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white" >
-    <CheckBox
+    android:orientation="horizontal"
+    android:background="@drawable/goal_list_border" >
+    <ImageButton
         android:id="@+id/goal_list_item_checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-
-        android:padding="4dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:scaleType="fitCenter"
+        android:layout_weight="1.20"
+        android:src="@drawable/plus_orange"
+        android:background="@color/white"/>
     <TextView
         android:id="@+id/goal_list_item_textView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@id/goal_list_item_checkbox"
-        android:textSize="40dp"/>
+        android:layout_weight="8"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="4dp"
+        android:layout_gravity="center_vertical"
+        android:textSize="20sp"/>
     <ImageButton
         android:id="@+id/goal_list_item_infoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:src="@drawable/ic_menu_info_details"
-        android:layout_alignParentRight="true" />
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1.2"
+        android:src="@drawable/info"
+        android:background="@color/white"/>
 
-</RelativeLayout>
+</LinearLayout>

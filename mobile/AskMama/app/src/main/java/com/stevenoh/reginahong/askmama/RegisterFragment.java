@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class RegisterFragment extends Fragment {
@@ -40,29 +41,34 @@ public class RegisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_register_info, parent, false);
 
+        LinearLayout registerPage = (LinearLayout) v.findViewById(R.id.register_page);
+        ImageView logoText = (ImageView) v.findViewById(R.id.logo_text);
         ImageView logo = (ImageView) v.findViewById(R.id.logo_image);
         TextView textView = (TextView) v.findViewById(R.id.register_textview);
-        Button leftCircle = (Button) v.findViewById(R.id.progress_circle1);
-        Button rightCircle = (Button) v.findViewById(R.id.progress_circle2);
+        LinearLayout progressCircle = (LinearLayout) v.findViewById(R.id.progress_circle);
+        Button registerButton = (Button) v.findViewById(R.id.register_button);
         // Change text view if more pages are to be added.
         switch (mPage) {
             case 0:
                 Log.d(TAG, "Case 0 selected");
+                registerPage.setBackgroundResource(R.color.white);
                 logo.setVisibility(View.VISIBLE);
+                logoText.setVisibility(View.VISIBLE);
                 textView.setVisibility(View.GONE);
-                leftCircle.setBackgroundResource(R.drawable.progress_circle_selected);
-                rightCircle.setBackgroundResource(R.drawable.progress_circle);
+                progressCircle.setVisibility(View.GONE);
+                registerButton.setBackgroundResource(R.drawable.start_red);
                 break;
             case 1:
                 Log.d(TAG, "Case 1 selected");
+                registerPage.setBackgroundResource(R.color.green);
                 logo.setVisibility(View.GONE);
+                logoText.setVisibility(View.GONE);
                 textView.setVisibility(View.VISIBLE);
-                leftCircle.setBackgroundResource(R.drawable.progress_circle);
-                rightCircle.setBackgroundResource(R.drawable.progress_circle_selected);
+                progressCircle.setVisibility(View.VISIBLE);
+                registerButton.setBackgroundResource(R.drawable.start_white);
                 break;
         }
 
-        Button registerButton = (Button) v.findViewById(R.id.register_button);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

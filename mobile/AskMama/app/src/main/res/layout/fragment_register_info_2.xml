@@ -15,7 +15,7 @@
             android:layout_width="270dp"
             android:layout_height="400dp"
             android:layout_gravity="center"
-            android:src="@drawable/logo"
+            android:src="@drawable/logo_img"
             android:visibility="gone"/>
 
         <TextView
