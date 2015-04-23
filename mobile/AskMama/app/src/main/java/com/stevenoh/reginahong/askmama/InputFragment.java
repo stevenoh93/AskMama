@@ -40,6 +40,8 @@ public class InputFragment extends Fragment {
     private ImageView mImageView;
     private Button mNextButton;
     private EditText mText;
+    private ImageView male;
+    private ImageView female;
 
 
     public static InputFragment newInstance(int idx) {
@@ -93,6 +95,7 @@ public class InputFragment extends Fragment {
                             ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(2);
                     }
                 });
+                mImageView.setImageResource(R.drawable.gingerman_height);
                 break;
             case 2:
                 // Set imageview source
@@ -113,6 +116,7 @@ public class InputFragment extends Fragment {
                             ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(3);
                     }
                 });
+                mImageView.setImageResource(R.drawable.gingerman_weight);
                 break;
             case 3:
                 // Set imageview source
@@ -132,6 +136,8 @@ public class InputFragment extends Fragment {
                         boolean set = false;
                         try {
                             mUser.setDob(mText.getText().toString());
+                            if (mText.length() == 0)
+                                throw new Exception();
                             set = true;
                         } catch (Exception e) {
                             Toast.makeText(getActivity(), R.string.error_dob, Toast.LENGTH_SHORT).show();
@@ -140,6 +146,7 @@ public class InputFragment extends Fragment {
                             ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(4);
                     }
                 });
+                mImageView.setImageResource(R.drawable.birthday);
                 break;
             case 4:
                 // Set male female image view source, female selected by default
@@ -147,26 +154,28 @@ public class InputFragment extends Fragment {
                 mText.setVisibility(View.GONE);
                 mNextButton.setVisibility(View.GONE);
                 mImageView.setVisibility(View.GONE);
-                LinearLayout maleFemaleImage = (LinearLayout) v.findViewById(R.id.input_maleFemalePage_LinearLayout);
+                LinearLayout maleFemaleImage = (LinearLayout) v.findViewById(R.id.input_gender_linearlayout);
                 maleFemaleImage.setVisibility(View.VISIBLE);
+                female = (ImageView) v.findViewById(R.id.input_female_image);
+                male = (ImageView) v.findViewById(R.id.input_male_image);
                 // Female image
-                ((ImageView) maleFemaleImage.getChildAt(0)).setOnClickListener(new View.OnClickListener() {
+                female.setImageResource(R.drawable.female);
+                female.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         mUser.setMale(false);
-                        // change image to selected
+                        female.setBackgroundResource(R.color.gray);
                         ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(5);
                     }
                 });
                 // Male image
-                ((ImageView) maleFemaleImage.getChildAt(1)).setOnClickListener(new View.OnClickListener() {
+                male.setImageResource(R.drawable.male);
+                male.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         mUser.setMale(true);
-                        // change image to selected
+                        male.setBackgroundResource(R.color.gray);
                         ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(5);
                     }
                 });
-                break;
-            case 5:
                 break;
         }
 

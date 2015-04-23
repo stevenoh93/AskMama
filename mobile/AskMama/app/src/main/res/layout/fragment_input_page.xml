@@ -3,7 +3,8 @@
     android:id="@+id/fragment_input_page"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <include
         android:id="@+id/progress_bar"
@@ -11,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:layout_weight="2"
+        android:layout_gravity="center"
+        android:layout_weight="6"
         layout="@layout/progress_row" />
 
     <LinearLayout
@@ -24,31 +26,66 @@
             android:id="@+id/input_question_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
             />
         <ImageView
             android:id="@+id/input_image_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             />
 
         <LinearLayout
-            android:id="@+id/input_maleFemalePage_LinearLayout"
+            android:id="@+id/input_gender_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone">
-            <ImageView
+            <RelativeLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-            <ImageView
+                android:layout_height="300dp"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/input_female_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/input_female_image"
+                    android:layout_margin="20dp"
+                    android:layout_centerInParent="true"
+                    android:textSize="20sp"
+                    android:text="Female"/>
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-            </LinearLayout>
+                android:layout_height="300dp"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/input_male_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/input_male_image"
+                    android:layout_margin="20dp"
+                    android:layout_centerInParent="true"
+                    android:textSize="20sp"
+                    android:text="Male"/>
+            </RelativeLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="30dp"
             android:gravity="center">
             <EditText
                 android:id="@+id/input_edit_text"
@@ -58,8 +95,10 @@
             <Button
                 android:id="@+id/input_next_button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/next_button" />
+                android:layout_height="match_parent"
+                android:text="@string/next_button"
+                android:textColor="@color/white"
+                android:background="@drawable/button_shape_normal"/>/>
             </LinearLayout>
 
         </LinearLayout>>

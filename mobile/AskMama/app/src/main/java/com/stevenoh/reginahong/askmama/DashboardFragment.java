@@ -7,8 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 public class DashboardFragment extends Fragment{
+    private ImageView daily;
+    private ImageView weekly;
+    private ImageView profile;
+    private UserProfile mUser = UserProfile.get();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,17 @@ public class DashboardFragment extends Fragment{
 
         DashboardAdapter da = new DashboardAdapter();
         recList.setAdapter(da);
+
+        daily = (ImageView) v.findViewById(R.id.daily_button);
+        weekly = (ImageView) v.findViewById(R.id.weekly_button);
+        profile = (ImageView) v.findViewById(R.id.profile_button);
+
+        daily.setBackgroundResource(R.color.green);
+        daily.setImageResource(R.drawable.icon_white_01);
+        weekly.setBackgroundResource(R.color.white);
+        weekly.setImageResource(R.drawable.icon_green_02);
+        profile.setBackgroundResource(R.color.white);
+        profile.setImageResource(R.drawable.icon_green_03);
         return v;
     }
 }

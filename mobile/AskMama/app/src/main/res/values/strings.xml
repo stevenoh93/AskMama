@@ -5,7 +5,7 @@
     <string name="register_button">Register</string>
     <string name="next_button">Next</string>
     <string name="lets_start">Let\'s start!</string>
-    <string name="register_info_2">Calories,\nNutrition values\nNo Worries!\n\nNutritionMate calculates it\nall for you!</string>
+    <string name="register_info_2">Calories,\nNutrition values\nNo Worries!\n\nNutritionMate calculates it all for you!</string>
     <string name="question_goals">Do you have goals and dietary needs?</string>
     <string name="my_goals">My Goals</string>
     <string name="add_goals">Add Goals</string>
@@ -20,11 +20,11 @@
     <string name="question_dob">When is your birthday?</string>
     <string name="input_dob">dd/mm/yyyy</string>
     <string name="question_sex">I am</string>
-    <string name="question_active">You are</string>
-    <string name="sedentary">Sedentary\nSpend most of the day sitting</string>
-    <string name="lightly_active">Lightly Active\nSpending a good part of the day on you feet</string>
-    <string name="active">Active\nSpend a good part of the day doing some physical activity</string>
-    <string name="very_active">Very Active\nSpend most of the day doing heavy physical activity</string>
+    <string name="question_active">How active are you?</string>
+    <string name="sedentary"><b>Sedentary</b>\nSpend most of the day sitting</string>
+    <string name="lightly_active"><b>Lightly Active</b>\nSpending a good part of the day on you feet</string>
+    <string name="active"><b>Active</b>\nSpend a good part of the day doing some physical activity</string>
+    <string name="very_active"><b>Very Active</b>\nSpend most of the day doing heavy physical activity</string>
     <string name="success_heading">Success!</string>
     <string name="success_message">Successfully Registered!\n\nYour recommended daily net calorie is\n\n %1$d Cal</string>
     <string name="success_start">Let\'s start!</string>
@@ -35,7 +35,7 @@
 
     <string name="error_height">Please enter a number for your height</string>
     <string name="error_weight">Please enter a number for your weight</string>
-    <string name="error_dob">Please enter your date of birth in the format \'mm/dd/yyyy\'</string>
+    <string name="error_dob">Please choose your date of birth</string>
 
 </resources>
 

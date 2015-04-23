@@ -30,7 +30,9 @@ public class SuccessPageFragment extends Fragment {
 
         TextView message = (TextView) v.findViewById(R.id.success_message);
         UserProfile up = UserProfile.get();
-        message.setText(String.format(getResources().getString(R.string.success_message), up.getDailyNetCalorie()));
+        try {
+            message.setText(String.format(getResources().getString(R.string.success_message), up.getDailyNetCalorie()));
+        } catch(Exception e) {}
 
         return v;
     }

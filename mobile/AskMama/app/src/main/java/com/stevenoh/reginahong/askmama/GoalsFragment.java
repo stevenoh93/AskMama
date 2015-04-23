@@ -62,7 +62,6 @@ public class GoalsFragment extends Fragment implements View.OnClickListener{
             ImageButton box = (ImageButton) goals[i].findViewById(R.id.goal_list_item_checkbox);
             box.setEnabled(true);
             box.setOnClickListener(this);
-            Log.d(TAG, "In the for loop, box.isEnabled() = " + box.isEnabled());
         }
 
         Button nextButton = (Button) v.findViewById(R.id.next_button);
