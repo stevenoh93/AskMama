@@ -28,10 +28,13 @@
     <string name="success_start">Let\'s start!</string>
 
     <string name="card_header_text">Regina, You are eating good!</string>
+    <string name="second_card_title">Nutrition check</string>
+    <string name="second_card_content">- Take less sodium food \n- Over 200 cal = Study 1 hour more</string>
 
     <string name="error_height">Please enter a number for your height</string>
     <string name="error_weight">Please enter a number for your weight</string>
     <string name="error_dob">Please enter your date of birth in the format \'mm/dd/yyyy\'</string>
 
 </resources>
+
 
