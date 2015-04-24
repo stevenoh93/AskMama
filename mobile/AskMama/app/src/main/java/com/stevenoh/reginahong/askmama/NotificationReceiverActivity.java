@@ -5,6 +5,6 @@ import android.support.v4.app.Fragment;
 
 public class NotificationReceiverActivity extends SingleFragmentActivity {
     public Fragment createFragment() {
-        SuggestionsFragment
+        return new SuggestionsFragment();
     }
 }

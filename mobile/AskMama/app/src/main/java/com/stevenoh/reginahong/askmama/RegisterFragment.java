@@ -5,6 +5,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -96,16 +98,21 @@ public class RegisterFragment extends Fragment {
         Intent intent = new Intent(getActivity(), NotificationReceiverActivity.class);
         PendingIntent pIntent = PendingIntent.getActivity(getActivity(), 0, intent, 0);
 
+        Uri alarmsound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
         Notification noti = new Notification.Builder(getActivity())
                 .setContentTitle(getResources().getString(R.string.notification_title))
-                .setContentText(getResources().getString(R.string.nutrition_check_content))
+                .setContentText(getResources().getString(R.string.notification_content))
                 .setContentIntent(pIntent)
+                .setSmallIcon(R.drawable.info)
+                .setSound(alarmsound)
                 .build();
 
         NotificationManager notiManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
-        noti.flags |= Notification.FLAG_AUTO_CANCEL;
+//        noti.flags |= Notification.FLAG_AUTO_CANCEL;
 
         notiManager.notify(0, noti);
+        Log.d(TAG,"Notification pressed");
     }
 
 }

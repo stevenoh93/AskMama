@@ -23,6 +23,9 @@
         <activity android:name=".DashboardActivity"
             android:label="AskMama" >
         </activity>
+        <activity android:name=".NotificationReceiverActivity"
+            android:label="AskMama" >
+        </activity>
     </application>
 
 </manifest>
