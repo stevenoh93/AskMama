@@ -1,5 +1,9 @@
 package com.stevenoh.reginahong.askmama;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -76,8 +80,32 @@ public class RegisterFragment extends Fragment {
                 startActivity(i);
             }
         });
+
+        // This code is for testing notification. To be removed
+        Button notiButton = (Button) v.findViewById(R.id.notification_start_button);
+        notiButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                createNotification();
+            }
+        });
+
         return v;
     }
 
+    private void createNotification() {
+        Intent intent = new Intent(getActivity(), NotificationReceiverActivity.class);
+        PendingIntent pIntent = PendingIntent.getActivity(getActivity(), 0, intent, 0);
+
+        Notification noti = new Notification.Builder(getActivity())
+                .setContentTitle(getResources().getString(R.string.notification_title))
+                .setContentText(getResources().getString(R.string.nutrition_check_content))
+                .setContentIntent(pIntent)
+                .build();
+
+        NotificationManager notiManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+        noti.flags |= Notification.FLAG_AUTO_CANCEL;
+
+        notiManager.notify(0, noti);
+    }
 
 }

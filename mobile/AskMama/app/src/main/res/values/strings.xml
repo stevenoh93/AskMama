@@ -30,8 +30,14 @@
     <string name="success_start">Let\'s start!</string>
 
     <string name="card_header_text">Regina, You are eating good!</string>
-    <string name="second_card_title">Nutrition check</string>
-    <string name="second_card_content">- Take less sodium food \n- Over 200 cal = Study 1 hour more</string>
+    <string name="calorie_counter_title">Total calorie you had today</string>
+    <string name="calorie_counter_content">Burrito Bowl, Chicken Sandwich</string>
+    <string name="nutrition_check_title">Nutrition check</string>
+    <string name="nutrition_check_content">- Take less sodium food \n- Over 200 cal = Study 1 hour more</string>
+    <string name="suggestion_title">Suggestions for later meal</string>
+
+    <string name="notification_title">NutritionMate</string>
+    <string name="notification_content">Hi Honey, \nAre you at Fresh&#38;Co?\nTap for my suggestions.</string>
 
     <string name="error_height">Please enter a number for your height</string>
     <string name="error_weight">Please enter a number for your weight</string>

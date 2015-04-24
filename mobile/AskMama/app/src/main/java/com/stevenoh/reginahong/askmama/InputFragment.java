@@ -3,6 +3,7 @@ package com.stevenoh.reginahong.askmama;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -76,9 +78,7 @@ public class InputFragment extends Fragment {
         mNextButton = (Button) v.findViewById(R.id.input_next_button);
         mText = (EditText) v.findViewById(R.id.input_edit_text);
         switch (mPage) {
-            case 1:
-                // Set imageview source
-                // Set button color
+            case 1: // Height
                 mQuestion.setText(R.string.question_height);
                 mText.setHint(R.string.input_height);
                 mText.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -91,15 +91,17 @@ public class InputFragment extends Fragment {
                         } catch (Exception e) {
                             Toast.makeText(getActivity(), R.string.error_height, Toast.LENGTH_SHORT).show();
                         }
-                        if (set)
+                        if (set) {
+                            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
+                                    Context.INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(mText.getWindowToken(), 0);
                             ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(2);
+                        }
                     }
                 });
                 mImageView.setImageResource(R.drawable.gingerman_height);
                 break;
-            case 2:
-                // Set imageview source
-                // Set button color
+            case 2: // Weight
                 mQuestion.setText(R.string.question_weight);
                 mText.setHint(R.string.input_weight);
                 mText.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -112,15 +114,17 @@ public class InputFragment extends Fragment {
                         } catch (Exception e) {
                             Toast.makeText(getActivity(), R.string.error_weight, Toast.LENGTH_SHORT).show();
                         }
-                        if (set)
+                        if (set) {
+                            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
+                                    Context.INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(mText.getWindowToken(), 0);
                             ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(3);
+                        }
                     }
                 });
                 mImageView.setImageResource(R.drawable.gingerman_weight);
                 break;
-            case 3:
-                // Set imageview source
-                // Set button color
+            case 3: // Date of birth
                 mQuestion.setText(R.string.question_dob);
                 mText.setHint(R.string.input_dob);
                 mText.setOnClickListener(new View.OnClickListener() {
@@ -142,8 +146,12 @@ public class InputFragment extends Fragment {
                         } catch (Exception e) {
                             Toast.makeText(getActivity(), R.string.error_dob, Toast.LENGTH_SHORT).show();
                         }
-                        if (set)
+                        if (set) {
+                            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
+                                    Context.INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(mText.getWindowToken(), 0);
                             ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(4);
+                        }
                     }
                 });
                 mImageView.setImageResource(R.drawable.birthday);
