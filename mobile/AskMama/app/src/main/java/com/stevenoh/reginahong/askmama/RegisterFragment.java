@@ -106,6 +106,7 @@ public class RegisterFragment extends Fragment {
                 .setContentIntent(pIntent)
                 .setSmallIcon(R.drawable.info)
                 .setSound(alarmsound)
+                .setAutoCancel(true)
                 .build();
 
         NotificationManager notiManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);

@@ -81,6 +81,6 @@
         android:id="@+id/notification_start_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#000000"
+        android:background="#00ffffff"
         />
 </LinearLayout>

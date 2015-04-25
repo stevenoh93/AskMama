@@ -2,19 +2,19 @@ package com.stevenoh.reginahong.askmama;
 
 import java.util.ArrayList;
 
-public class MealSuggestion {
-    private static MealSuggestion sSuggestion;
+public class MealImageSuggestion {
+    private static MealImageSuggestion sSuggestion;
 
     private ArrayList<Integer> images;
     private int currentIdx;
 
-    public static MealSuggestion get(){
+    public static MealImageSuggestion get(){
         if (sSuggestion == null)
-            sSuggestion = new MealSuggestion();
+            sSuggestion = new MealImageSuggestion();
         return sSuggestion;
     }
 
-    private MealSuggestion() {
+    private MealImageSuggestion() {
         images = new ArrayList<Integer>();
 
         images.add(R.drawable.salad_1);

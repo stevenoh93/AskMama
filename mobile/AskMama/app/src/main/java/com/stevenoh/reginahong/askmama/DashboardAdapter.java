@@ -1,7 +1,5 @@
 package com.stevenoh.reginahong.askmama;
 
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,7 +12,6 @@ import android.widget.TextView;
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -70,7 +67,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 holder3.cardContent.setImageResource(R.drawable.salad_1);
                 holder3.nextButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
-                        MealSuggestion ms = MealSuggestion.get();
+                        MealImageSuggestion ms = MealImageSuggestion.get();
                         ms.setCurrentIdx((ms.getCurrentIdx() + 1) % ms.getSize());
                         holder3.cardContent.setImageResource(ms.getImageResource());
                     }

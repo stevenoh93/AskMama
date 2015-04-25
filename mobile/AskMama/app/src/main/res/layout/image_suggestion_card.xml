@@ -8,7 +8,7 @@
     card_view:cardCornerRadius="5dp"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
-    android:layout_marginBottom="20dp">
+    android:layout_marginBottom="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,8 +29,9 @@
 
             <ImageView
                 android:id="@+id/suggestion_image"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:src="@drawable/salad_1"
                 android:layout_toLeftOf="@+id/suggestion_next_button"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
@@ -39,7 +40,8 @@
                 android:id="@+id/suggestion_next_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/next_01"
+                android:src="@drawable/back_gray_right"
+                android:background="@color/white"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true" />
 

@@ -39,10 +39,20 @@
     <string name="notification_title">NutritionMate</string>
     <string name="notification_content">Hi Honey, \nAre you at Fresh&#38;Co?\nTap for my suggestions.</string>
 
+    <string name="suggestions_page_heading">Suggestions at Chipotle</string>
+    <string name="menu_heading">Menu</string>
+    <string name="cal_heading">Cal</string>
+    <string name="price_heading">Price</string>
+    <string name="nutrients_heading">Nutrients</string>
+    <string name="healthy_mod_example">Healthy Modifications\nBlack beans, No dressing, No flour tortilla, No rice, No cheese, No sour cream</string>
+    <string name="include_button">Ok, include in daily history</string>
+
+
     <string name="error_height">Please enter a number for your height</string>
     <string name="error_weight">Please enter a number for your weight</string>
     <string name="error_dob">Please choose your date of birth</string>
 
 </resources>
+
 
 
