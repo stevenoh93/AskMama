@@ -21,15 +21,12 @@ public class ActiveLevelFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
+//        setRetainInstance(true);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         super.onCreateView(inflater,parent,savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_active_level_page, parent, false);
-
-        // Set progress bar
-        MyUtilities.updateProgressBar(v, mPage);
 
         LinearLayout levels = (LinearLayout) v.findViewById(R.id.active_level_choice_list);
         TextView curTextView;
@@ -39,8 +36,7 @@ public class ActiveLevelFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mUser.setActiveLevel(0);
-                if (validateInput())
-                    ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(6);
+                moveToNextPage();
             }
         });
 
@@ -49,8 +45,7 @@ public class ActiveLevelFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mUser.setActiveLevel(1);
-                if (validateInput())
-                    ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(6);
+                moveToNextPage();
             }
         });
 
@@ -59,8 +54,7 @@ public class ActiveLevelFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mUser.setActiveLevel(2);
-                if (validateInput())
-                    ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(6);
+                moveToNextPage();
             }
         });
 
@@ -69,8 +63,7 @@ public class ActiveLevelFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mUser.setActiveLevel(3);
-                if (validateInput())
-                    ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(6);
+                moveToNextPage();
             }
         });
 
@@ -80,5 +73,14 @@ public class ActiveLevelFragment extends Fragment {
     private boolean validateInput() {
         Log.d(TAG, mUser.toString());
         return true;
+    }
+
+    private void moveToNextPage() {
+        if (validateInput()) {
+            getParentFragment().getFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentContainer, new SuccessPageFragment())
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 }

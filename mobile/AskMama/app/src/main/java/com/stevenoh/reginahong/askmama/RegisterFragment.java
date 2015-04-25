@@ -78,7 +78,7 @@ public class RegisterFragment extends Fragment {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), InputPagerActivity.class);
+                Intent i = new Intent(getActivity(), InputActivity.class);
                 startActivity(i);
             }
         });

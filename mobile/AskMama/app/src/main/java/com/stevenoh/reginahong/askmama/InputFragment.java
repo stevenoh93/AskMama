@@ -58,7 +58,7 @@ public class InputFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(EXTRA_INPUT_PAGE);
         mUser = UserProfile.get();
-        setRetainInstance(true);
+//        setRetainInstance(true);
     }
 
     @Override
@@ -72,7 +72,6 @@ public class InputFragment extends Fragment {
         // set button color
         // set text
 
-        MyUtilities.updateProgressBar(v, mPage);
         mQuestion = (TextView) v.findViewById(R.id.input_question_textView);
         mImageView = (ImageView) v.findViewById(R.id.input_image_view);
         mNextButton = (Button) v.findViewById(R.id.input_next_button);
@@ -95,7 +94,7 @@ public class InputFragment extends Fragment {
                             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
                                     Context.INPUT_METHOD_SERVICE);
                             imm.hideSoftInputFromWindow(mText.getWindowToken(), 0);
-                            ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(2);
+                            ((InputPagerFragment) getParentFragment()).viewPager.setCurrentItem(2);
                         }
                     }
                 });
@@ -118,7 +117,7 @@ public class InputFragment extends Fragment {
                             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
                                     Context.INPUT_METHOD_SERVICE);
                             imm.hideSoftInputFromWindow(mText.getWindowToken(), 0);
-                            ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(3);
+                            ((InputPagerFragment) getParentFragment()).viewPager.setCurrentItem(3);
                         }
                     }
                 });
@@ -150,7 +149,7 @@ public class InputFragment extends Fragment {
                             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
                                     Context.INPUT_METHOD_SERVICE);
                             imm.hideSoftInputFromWindow(mText.getWindowToken(), 0);
-                            ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(4);
+                            ((InputPagerFragment) getParentFragment()).viewPager.setCurrentItem(4);
                         }
                     }
                 });
@@ -172,7 +171,7 @@ public class InputFragment extends Fragment {
                     public void onClick(View view) {
                         mUser.setMale(false);
                         female.setBackgroundResource(R.color.gray);
-                        ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(5);
+                        ((InputPagerFragment) getParentFragment()).viewPager.setCurrentItem(5);
                     }
                 });
                 // Male image
@@ -181,7 +180,7 @@ public class InputFragment extends Fragment {
                     public void onClick(View view) {
                         mUser.setMale(true);
                         male.setBackgroundResource(R.color.gray);
-                        ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(5);
+                        ((InputPagerFragment) getParentFragment()).viewPager.setCurrentItem(5);
                     }
                 });
                 break;

@@ -17,6 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".InputActivity"
+            android:label="AskMama" >
+        </activity>
         <activity android:name=".InputPagerActivity"
             android:label="AskMama" >
         </activity>

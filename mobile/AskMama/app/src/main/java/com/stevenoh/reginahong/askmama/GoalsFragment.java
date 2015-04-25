@@ -41,7 +41,7 @@ public class GoalsFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
+//        setRetainInstance(true);
 
     }
 
@@ -49,8 +49,6 @@ public class GoalsFragment extends Fragment implements View.OnClickListener{
         super.onCreateView(inflater,parent,savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_goals_page, parent, false);
 
-        // Set progress bar
-        MyUtilities.updateProgressBar(v, mPage);
 
         unGoals = (LinearLayout) v.findViewById(R.id.unselected_goals_linearlayout);
         selGoals = (LinearLayout) v.findViewById(R.id.selected_goals_linearlayout);
@@ -78,7 +76,7 @@ public class GoalsFragment extends Fragment implements View.OnClickListener{
                 for (int i=0; i<goals.length; i++)
                     mUser.setGoal(i, selected[i]);
 
-                ((InputPagerActivity) getActivity()).mViewPager.setCurrentItem(1);
+                ((InputPagerFragment) getParentFragment()).viewPager.setCurrentItem(1);
             }
         });
 

@@ -30,7 +30,7 @@ public class InputPagerActivity extends FragmentActivity {
 
 //        mViewPager = (ViewPager) findViewById(R.id.viewPager);
         mViewPager = new ViewPager(this);
-        mViewPager.setId(R.id.viewPager_input);
+//        mViewPager.setId(R.id.viewPager_input);
         setContentView(mViewPager);
 
         FragmentManager fm = getSupportFragmentManager();
