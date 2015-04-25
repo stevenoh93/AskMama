@@ -1,6 +1,7 @@
 package com.stevenoh.reginahong.askmama;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -77,10 +78,17 @@ public class ActiveLevelFragment extends Fragment {
 
     private void moveToNextPage() {
         if (validateInput()) {
-            getParentFragment().getFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentContainer, new SuccessPageFragment())
-                    .addToBackStack(null)
-                    .commit();
+            // Change clicked item color
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    getParentFragment().getFragmentManager().beginTransaction()
+                            .replace(R.id.fragmentContainer, new SuccessPageFragment())
+                            .addToBackStack(null)
+                            .commit();
+                }
+            }, 300);
         }
     }
 }

@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
@@ -189,19 +190,35 @@ public class InputFragment extends Fragment {
                 female.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         mUser.setMale(false);
-                        ((InputPagerFragment) getParentFragment()).viewPager.setCurrentItem(5);
+                        female.setImageResource(R.drawable.female_clicked);
+                        male.setImageResource(R.drawable.male);
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                ((InputPagerFragment) getParentFragment()).viewPager.setCurrentItem(5);
+                            }
+                        }, 300);
                     }
                 });
-                female.setOnTouchListener(onTouchListener);
+//                female.setOnTouchListener(onTouchListener);
                 // Male image
                 male.setImageResource(R.drawable.male);
                 male.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         mUser.setMale(true);
-                        ((InputPagerFragment) getParentFragment()).viewPager.setCurrentItem(5);
+                        female.setImageResource(R.drawable.female);
+                        male.setImageResource(R.drawable.male_clicked);
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                ((InputPagerFragment) getParentFragment()).viewPager.setCurrentItem(5);
+                            }
+                        }, 300);
                     }
                 });
-                male.setOnTouchListener(onTouchListener);
+//                male.setOnTouchListener(onTouchListener);
 
                 break;
         }

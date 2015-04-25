@@ -39,11 +39,11 @@ public class DashboardFragment extends Fragment{
         profile = (ImageView) v.findViewById(R.id.profile_button);
 
         daily.setBackgroundResource(R.color.green);
-        daily.setImageResource(R.drawable.icon_white_01);
+        daily.setImageResource(R.drawable.icon_white_02);
         weekly.setBackgroundResource(R.color.white);
-        weekly.setImageResource(R.drawable.icon_green_02);
+        weekly.setImageResource(R.drawable.icon_green_03);
         profile.setBackgroundResource(R.color.white);
-        profile.setImageResource(R.drawable.icon_green_03);
+        profile.setImageResource(R.drawable.icon_green_01);
         return v;
     }
 }
