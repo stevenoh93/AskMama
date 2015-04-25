@@ -27,7 +27,12 @@ public class GoalsFragment extends Fragment implements View.OnClickListener{
             R.string.goal_3,
             R.string.goal_4
     };
-    private boolean[] selected = new boolean[4];
+    private boolean[] selected = new boolean[] {
+            true,
+            false,
+            false,
+            false
+    };
     private UserProfile mUser = UserProfile.get();
     private LinearLayout[] goals;
     private LinearLayout unGoals;
@@ -60,6 +65,8 @@ public class GoalsFragment extends Fragment implements View.OnClickListener{
             TextView goalTextView = (TextView) goals[i].findViewById(R.id.goal_list_item_textView);
             goalTextView.setText(goalText[i]);
             ImageButton box = (ImageButton) goals[i].findViewById(R.id.goal_list_item_checkbox);
+            if (i==0)
+                box.setImageResource(R.drawable.checkmark);
             box.setEnabled(true);
             box.setOnClickListener(this);
         }
