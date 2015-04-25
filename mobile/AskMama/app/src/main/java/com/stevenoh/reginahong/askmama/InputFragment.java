@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -165,24 +166,43 @@ public class InputFragment extends Fragment {
                 maleFemaleImage.setVisibility(View.VISIBLE);
                 female = (ImageView) v.findViewById(R.id.input_female_image);
                 male = (ImageView) v.findViewById(R.id.input_male_image);
+
+                View.OnTouchListener onTouchListener = new View.OnTouchListener() {
+                    public boolean onTouch(View view, MotionEvent event) {
+                        switch (view.getId()) {
+                            case R.id.input_female_image:
+                                female.setImageResource(R.drawable.female_clicked);
+                                male.setImageResource(R.drawable.male);
+                                break;
+                            case R.id.input_male_image:
+                                female.setImageResource(R.drawable.female);
+                                male.setImageResource(R.drawable.male_clicked);
+                                break;
+                        }
+
+                        return false;
+                    }
+                };
+
                 // Female image
                 female.setImageResource(R.drawable.female);
                 female.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         mUser.setMale(false);
-                        female.setBackgroundResource(R.color.gray);
                         ((InputPagerFragment) getParentFragment()).viewPager.setCurrentItem(5);
                     }
                 });
+                female.setOnTouchListener(onTouchListener);
                 // Male image
                 male.setImageResource(R.drawable.male);
                 male.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
                         mUser.setMale(true);
-                        male.setBackgroundResource(R.color.gray);
                         ((InputPagerFragment) getParentFragment()).viewPager.setCurrentItem(5);
                     }
                 });
+                male.setOnTouchListener(onTouchListener);
+
                 break;
         }
 
