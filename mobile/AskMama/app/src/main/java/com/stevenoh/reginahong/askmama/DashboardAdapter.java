@@ -21,14 +21,17 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 //    private static CardHolder1 holder1;
 //    private static CardHolder2 holder2;
     private static CardHolder3 holder3;
+    private boolean fromSuggestion;
 
 
-    public DashboardAdapter() {
+    public DashboardAdapter(boolean fs) {
         cards = new ArrayList<DashboardCard>();
         cards.add(new DashboardCard());
         cards.add(new DashboardCard());
         cards.add(new DashboardCard());
         cards.add(new DashboardCard());
+        fromSuggestion = fs;
+        Log.d("DashboardAdapter","fs = " + fs);
     }
 
     @Override
@@ -39,7 +42,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder h, int i) {
         DashboardCard curCard = cards.get(i);
-        Log.d("DashboardAdapter", "index at onBindViewHolder is " + i);
         switch (i) {
             case 0: // Header card
                 Calendar c = Calendar.getInstance();
@@ -52,6 +54,10 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 CardHolder1 holder1 = (CardHolder1) h;
                 holder1.cardTitle.setText(R.string.calorie_counter_title);
                 holder1.cardContent.setText(R.string.calorie_counter_content);
+                if (fromSuggestion)
+                    holder1.progressBar.setImageResource(R.drawable.daily_progress);
+                else
+                    holder1.progressBar.setImageResource(R.drawable.empty_calorie);
                 // Add listeneres to buttons
                 // Update calorie bar here
                 break;

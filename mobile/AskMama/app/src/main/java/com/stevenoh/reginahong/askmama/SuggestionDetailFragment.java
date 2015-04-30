@@ -66,6 +66,7 @@ public class SuggestionDetailFragment extends Fragment {
         inc.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), DashboardActivity.class);
+                i.putExtra(DashboardActivity.CALORIE_ADDED, 200);  // Change to actual calorie
                 startActivity(i);
             }
         });

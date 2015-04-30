@@ -26,6 +26,7 @@ public class UserProfile {
     private static UserProfile sUser;
     private int mDailyNetCalorie;
     private boolean calorieCalculated;
+    private int calorieConsumed;
 
     private UserProfile() {
         mActiveLevelChoice = -1;
@@ -75,6 +76,11 @@ public class UserProfile {
                 mActiveLevel = mIsMale ? 1.48 : 1.45;
                 break;
         }
+    }
+
+    public int addCalorieConsumed(int cal) {
+        calorieConsumed += cal;
+        return calorieConsumed;
     }
 
 

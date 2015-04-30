@@ -49,7 +49,6 @@ public class GoalsFragment extends Fragment implements View.OnClickListener{
         super.onCreateView(inflater,parent,savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_goals_page, parent, false);
 
-
         unGoals = (LinearLayout) v.findViewById(R.id.unselected_goals_linearlayout);
         selGoals = (LinearLayout) v.findViewById(R.id.selected_goals_linearlayout);
         goals = new LinearLayout[] {
@@ -63,10 +62,16 @@ public class GoalsFragment extends Fragment implements View.OnClickListener{
             TextView goalTextView = (TextView) goals[i].findViewById(R.id.goal_list_item_textView);
             goalTextView.setText(goalText[i]);
             ImageButton box = (ImageButton) goals[i].findViewById(R.id.goal_list_item_checkbox);
-            if (i==0)
+
+            if (i==0) {
                 box.setImageResource(R.drawable.checkmark);
+                goals[i].setBackgroundResource(R.drawable.goal_list_border);
+            } else if (i==1) {
+                goals[i].setBackgroundResource(R.drawable.goal_list_border);
+            } else
+                goals[i].setBackgroundResource(R.drawable.goal_list_border_bottom);
             box.setEnabled(true);
-            box.setOnClickListener(this);
+            goals[i].setOnClickListener(this);
         }
 
         Button nextButton = (Button) v.findViewById(R.id.next_button);
@@ -84,8 +89,8 @@ public class GoalsFragment extends Fragment implements View.OnClickListener{
     }
 
     public void onClick(View view) {
-        LinearLayout parent = (LinearLayout) view.getParent();
-        ImageButton addButton = (ImageButton) view;
+        LinearLayout parent = (LinearLayout) view;
+        ImageButton addButton = (ImageButton) view.findViewById(R.id.goal_list_item_checkbox);
         int id = parent.getId();
         int index = 0;
         switch (id) {
@@ -108,6 +113,9 @@ public class GoalsFragment extends Fragment implements View.OnClickListener{
             selected[index] = false;
             selGoals.removeView(parent);
             unGoals.addView(parent);
+            parent.setBackgroundResource(R.drawable.goal_list_border_bottom);
+            if (selGoals.getChildCount() > 1)
+                selGoals.getChildAt(1).setBackgroundResource(R.drawable.goal_list_border);
             addButton.setImageResource(R.drawable.plus_orange);
             params = (LayoutParams) selGoals.getLayoutParams();
             params.weight -= .15;
@@ -119,6 +127,9 @@ public class GoalsFragment extends Fragment implements View.OnClickListener{
             selected[index] = true;
             unGoals.removeView(parent);
             selGoals.addView(parent);
+            parent.setBackgroundResource(R.drawable.goal_list_border_bottom);
+            if (unGoals.getChildCount() > 1)
+                unGoals.getChildAt(1).setBackgroundResource(R.drawable.goal_list_border);
             addButton.setImageResource(R.drawable.checkmark);
             params = (LayoutParams) selGoals.getLayoutParams();
             params.weight += .15;
