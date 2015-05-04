@@ -39,6 +39,7 @@
     <string name="nutrition_check_title">Nutrition check</string>
     <string name="nutrition_check_content">- Take less sodium food \n- Over 200 cal = Study 1 hour more</string>
     <string name="suggestion_title">Suggestions for later meal</string>
+    <string name="nutrition_intake">Intake nutrition values</string>
 
     <string name="notification_title">NutritionMate</string>
     <string name="notification_content">Hi Honey, \nAre you at Fresh&#38;Co?\nTap for my suggestions.</string>

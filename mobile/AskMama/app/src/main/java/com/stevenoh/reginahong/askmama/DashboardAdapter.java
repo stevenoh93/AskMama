@@ -22,16 +22,29 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 //    private static CardHolder2 holder2;
     private static CardHolder3 holder3;
     private boolean fromSuggestion;
+    private int page;
 
 
-    public DashboardAdapter(boolean fs) {
+    public DashboardAdapter(boolean fs, int p) {
         cards = new ArrayList<DashboardCard>();
-        cards.add(new DashboardCard());
-        cards.add(new DashboardCard());
-        cards.add(new DashboardCard());
-        cards.add(new DashboardCard());
-        fromSuggestion = fs;
-        Log.d("DashboardAdapter","fs = " + fs);
+        page = p;
+        switch (p) {
+            case 0:
+                cards.add(new DashboardCard());
+                cards.add(new DashboardCard());
+                cards.add(new DashboardCard());
+                cards.add(new DashboardCard());
+                fromSuggestion = fs;
+                break;
+            case 1:
+                cards.add(new DashboardCard());
+                cards.add(new DashboardCard());
+                cards.add(new DashboardCard());
+                break;
+            case 2:
+                break;
+        }
+
     }
 
     @Override
@@ -41,7 +54,74 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder h, int i) {
-        DashboardCard curCard = cards.get(i);
+        switch (page) {
+            case 0:
+                bindDailyDashboard(h, i);
+                break;
+            case 1:
+                bindWeeklyDashboard(h, i);
+                break;
+        }
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        View itemView = null;
+        switch (page) {
+            case 0:
+                switch (i) {
+                    case 0:
+                        itemView = LayoutInflater.
+                                from(viewGroup.getContext()).
+                                inflate(R.layout.dashboard_header_card, viewGroup, false);
+                        return new CardHolder0(itemView);
+                    case 1:
+                        itemView = LayoutInflater.
+                                from(viewGroup.getContext()).
+                                inflate(R.layout.calorie_progress_card, viewGroup, false);
+                        return new CardHolder1(itemView);
+                    case 2:
+                        itemView = LayoutInflater.
+                                from(viewGroup.getContext()).
+                                inflate(R.layout.general_card, viewGroup, false);
+                        return new CardHolder2(itemView);
+                    case 3:
+                        itemView = LayoutInflater.
+                                from(viewGroup.getContext()).
+                                inflate(R.layout.image_suggestion_card, viewGroup, false);
+                        return new CardHolder3(itemView);
+                }
+                break;
+            case 1:
+                switch (i) {
+                    case 0:
+                        itemView = LayoutInflater.
+                                from(viewGroup.getContext()).
+                                inflate(R.layout.dashboard_header_card, viewGroup, false);
+                        return new CardHolder0(itemView);
+                    case 1:
+                        itemView = LayoutInflater.
+                                from(viewGroup.getContext()).
+                                inflate(R.layout.image_card, viewGroup, false);
+                        return new CardHolder(itemView);
+                    case 2:
+                        itemView = LayoutInflater.
+                                from(viewGroup.getContext()).
+                                inflate(R.layout.titled_image_card, viewGroup, false);
+                        return new CardHolder(itemView);
+                }
+                break;
+        }
+
+        return null;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    private void bindDailyDashboard(RecyclerView.ViewHolder h, int i) {
         switch (i) {
             case 0: // Header card
                 Calendar c = Calendar.getInstance();
@@ -58,8 +138,11 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     holder1.progressBar.setImageResource(R.drawable.daily_progress);
                 else
                     holder1.progressBar.setImageResource(R.drawable.empty_calorie);
-                // Add listeneres to buttons
-                // Update calorie bar here
+                holder1.addCalorie.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+
+                    }
+                });
                 break;
             case 2:
                 CardHolder2 holder2 = (CardHolder2) h;
@@ -81,37 +164,21 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
     }
 
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View itemView = null;
-        switch (i) {
-            case 0:
-                itemView = LayoutInflater.
-                        from(viewGroup.getContext()).
-                        inflate(R.layout.dashboard_header_card, viewGroup, false);
-                return new CardHolder0(itemView);
-            case 1:
-                itemView = LayoutInflater.
-                        from(viewGroup.getContext()).
-                        inflate(R.layout.calorie_progress_card, viewGroup, false);
-                return new CardHolder1(itemView);
-            case 2:
-                itemView = LayoutInflater.
-                        from(viewGroup.getContext()).
-                        inflate(R.layout.general_card, viewGroup, false);
-                return new CardHolder2(itemView);
-            case 3:
-                itemView = LayoutInflater.
-                        from(viewGroup.getContext()).
-                        inflate(R.layout.image_suggestion_card, viewGroup, false);
-                return new CardHolder3(itemView);
+    private void bindWeeklyDashboard(RecyclerView.ViewHolder h, int i) {
+        if (i == 0) {
+            Calendar c = Calendar.getInstance();
+            CardHolder0 holder = (CardHolder0) h;
+            holder.headerTextView.setText(R.string.card_header_text);
+            holder.month.setText(new DateFormatSymbols().getMonths()[c.get(Calendar.MONTH)]);
+            holder.dayOfMonth.setText(Integer.toString(c.get(Calendar.DAY_OF_MONTH)) + "-"
+                    + Integer.toString(c.get(Calendar.DAY_OF_MONTH) + 7));
         }
-        return null;
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        return position;
+    public static class CardHolder extends RecyclerView.ViewHolder {
+        public CardHolder(View v) {
+            super(v);
+        }
     }
 
     public static class CardHolder0 extends RecyclerView.ViewHolder {

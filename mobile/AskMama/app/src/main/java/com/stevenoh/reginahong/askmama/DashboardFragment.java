@@ -19,6 +19,10 @@ public class DashboardFragment extends Fragment{
     private ImageView profile;
     private UserProfile mUser = UserProfile.get();
     private boolean fromSuggestion;
+    private RecyclerView recList;
+
+    private DashboardAdapter dailyda;
+    private DashboardAdapter weeklyda;
 
     public static DashboardFragment newInstance(int cal) {
         DashboardFragment dash = new DashboardFragment();
@@ -44,14 +48,14 @@ public class DashboardFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.dashboard, parent, false);
 
-        RecyclerView recList = (RecyclerView) v.findViewById(R.id.cardList);
+        recList = (RecyclerView) v.findViewById(R.id.cardList);
         recList.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
 
-        DashboardAdapter da = new DashboardAdapter(fromSuggestion);
-        recList.setAdapter(da);
+        dailyda = new DashboardAdapter(fromSuggestion, 0);
+        recList.setAdapter(dailyda);
 
         daily = (ImageView) v.findViewById(R.id.daily_button);
         weekly = (ImageView) v.findViewById(R.id.weekly_button);
@@ -59,10 +63,37 @@ public class DashboardFragment extends Fragment{
 
         ((LinearLayout) daily.getParent()).setBackgroundResource(R.color.green);
         daily.setImageResource(R.drawable.icon_white_02);
+        daily.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if (dailyda == null)
+                    dailyda = new DashboardAdapter(fromSuggestion, 0);
+                recList.setAdapter(dailyda);
+                daily.setImageResource(R.drawable.icon_white_02);
+                weekly.setImageResource(R.drawable.icon_green_03);
+                profile.setImageResource(R.drawable.icon_green_01);
+                ((LinearLayout) daily.getParent()).setBackgroundResource(R.color.green);
+                ((LinearLayout) weekly.getParent()).setBackgroundResource(R.color.white);
+                ((LinearLayout) profile.getParent()).setBackgroundResource(R.color.white);
+            }
+        });
         ((LinearLayout) weekly.getParent()).setBackgroundResource(R.color.white);
         weekly.setImageResource(R.drawable.icon_green_03);
+        weekly.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if (weeklyda == null)
+                    weeklyda = new DashboardAdapter(fromSuggestion, 1);
+                recList.setAdapter(weeklyda);
+                daily.setImageResource(R.drawable.icon_green_02);
+                weekly.setImageResource(R.drawable.icon_white_03);
+                profile.setImageResource(R.drawable.icon_green_01);
+                ((LinearLayout) daily.getParent()).setBackgroundResource(R.color.white);
+                ((LinearLayout) weekly.getParent()).setBackgroundResource(R.color.green);
+                ((LinearLayout) profile.getParent()).setBackgroundResource(R.color.white);
+            }
+        });
         ((LinearLayout) profile.getParent()).setBackgroundResource(R.color.white);
         profile.setImageResource(R.drawable.icon_green_01);
         return v;
     }
 }
+
