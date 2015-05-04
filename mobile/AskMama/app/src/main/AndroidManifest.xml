@@ -26,6 +26,9 @@
         <activity android:name=".NotificationReceiverActivity"
             android:label="AskMama" >
         </activity>
+        <activity android:name=".AddCalorieActivity"
+            android:label="AskMama" >
+        </activity>
     </application>
 
 </manifest>

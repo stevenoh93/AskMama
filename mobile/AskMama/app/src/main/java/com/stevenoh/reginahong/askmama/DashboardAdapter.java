@@ -1,5 +1,7 @@
 package com.stevenoh.reginahong.askmama;
 
+import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -140,7 +142,8 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     holder1.progressBar.setImageResource(R.drawable.empty_calorie);
                 holder1.addCalorie.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
-
+                        Intent i = new Intent(view.getContext(), AddCalorieActivity.class);
+                        view.getContext().startActivity(i);
                     }
                 });
                 break;
@@ -152,7 +155,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             case 3:
                 holder3 = (CardHolder3) h;
                 holder3.cardTitle.setText(R.string.suggestion_title);
-//                ((BitmapDrawable)holder3.cardContent.getDrawable()).getBitmap().recycle();
                 holder3.cardContent.setImageResource(R.drawable.salad_1);
                 holder3.nextButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View view) {
