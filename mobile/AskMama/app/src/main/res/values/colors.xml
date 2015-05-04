@@ -12,9 +12,10 @@
     <color name="blue40">#288ac4dc</color>
     <color name="blue20">#148ac4dc</color>
     <color name="green">#c2d133</color>
-    <color name="whiteOp">#5Affffff</color>
-    <color name="whiteLight">#28ffffff</color>
-    <color name="whiteMed">#46ffffff</color>
+    <color name="dark_green">#94af3e</color>
+    <color name="active01">#E6ffffff</color>
+    <color name="active02">#99FFFFFF</color>
+    <color name="active03">#4DFFFFFF</color>
     <color name="orange">#faa14e</color>
     <color name="beige">#14c2d133</color>
 </resources>
