@@ -146,6 +146,12 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                         view.getContext().startActivity(i);
                     }
                 });
+                holder1.addCalorieText.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        Intent i = new Intent(view.getContext(), AddCalorieActivity.class);
+                        view.getContext().startActivity(i);
+                    }
+                });
                 break;
             case 2:
                 CardHolder2 holder2 = (CardHolder2) h;
@@ -202,6 +208,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         protected TextView cardContent;
         protected ImageView progressBar;
         protected ImageButton addCalorie;
+        protected TextView addCalorieText;
 
         public CardHolder1(View v) {
             super(v);
@@ -209,6 +216,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             cardContent = (TextView) v.findViewById(R.id.card_content_textview);
             progressBar = (ImageView) v.findViewById(R.id.daily_progress_bar);
             addCalorie = (ImageButton) v.findViewById(R.id.add_calorie_button);
+            addCalorieText = (TextView) v.findViewById(R.id.add_calorie_text);
         }
     }
 

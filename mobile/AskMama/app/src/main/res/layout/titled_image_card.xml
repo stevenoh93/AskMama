@@ -20,15 +20,54 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:textSize="16sp"
             android:gravity="left|center_vertical"
             android:text="@string/nutrition_intake"
             android:background="@drawable/card_textview_border" />
 
-        <ImageView
-            android:id="@+id/suggestion_image"
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:src="@drawable/weekly_nut" />
+            android:layout_height="wrap_content"
+            android:shrinkColumns="0,1"
+            >
+            <TableRow>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:padding="15dp"
+                    android:src="@drawable/weekly_fat" />
+                <!--android:paddingTop="10dp"-->
+                <!--android:paddingBottom="5dp"-->
+                <!--android:paddingLeft="5dp"-->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:padding="15dp"
+                    android:src="@drawable/weekly_vitamin" />
+                <!--android:paddingTop="10dp"-->
+                <!--android:paddingBottom="5dp"-->
+                <!--android:paddingRight="5dp"-->
+            </TableRow>
+            <TableRow>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:padding="15dp"
+                    android:src="@drawable/weekly_calcium" />
+                <!--android:paddingBottom="10dp"-->
+                <!--android:paddingTop="5dp"-->
+                <!--android:paddingLeft="5dp"-->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:padding="15dp"
+                    android:src="@drawable/weekly_iron" />
+                <!--android:paddingBottom="10dp"-->
+                <!--android:paddingTop="5dp"-->
+                <!--android:paddingRight="5dp"-->
+            </TableRow>
+            </TableLayout>
+
 
     </LinearLayout>
 

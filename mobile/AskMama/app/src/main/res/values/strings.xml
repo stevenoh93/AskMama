@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AskMama</string>
+    <string name="app_name">NutritionMate</string>
 
     <string name="swipe_learn_more">Swipe to learn more</string>
     <string name="register_button">Register</string>
@@ -44,7 +44,7 @@
     <string name="notification_title">NutritionMate</string>
     <string name="notification_content">Hi Honey, \nAre you at Fresh&#38;Co?\nTap for my suggestions.</string>
 
-    <string name="suggestions_page_heading">Suggestions at Chipotle</string>
+    <string name="suggestions_page_heading">Suggestions at Fresh&#38;Co</string>
     <string name="menu_heading">Menu</string>
     <string name="cal_heading">Cal</string>
     <string name="price_heading">Price</string>

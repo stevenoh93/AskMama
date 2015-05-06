@@ -104,7 +104,7 @@ public class RegisterFragment extends Fragment {
                 .setContentTitle(getResources().getString(R.string.notification_title))
                 .setContentText(getResources().getString(R.string.notification_content))
                 .setContentIntent(pIntent)
-                .setSmallIcon(R.drawable.info)
+                .setSmallIcon(R.drawable.logo_icon)
                 .setSound(alarmsound)
                 .setAutoCancel(true)
                 .build();
